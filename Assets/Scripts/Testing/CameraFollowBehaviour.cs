@@ -7,7 +7,7 @@ public class CameraFollowBehaviour : MonoBehaviour
     private Vector3 _offset;
 
     [SerializeReference]
-    private Transform _player;
+    private Transform _player = null;
 
     public float camPosX;
     public float camPosY;

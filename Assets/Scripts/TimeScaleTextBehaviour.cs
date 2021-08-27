@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TimeScaleTextBehaviour : MonoBehaviour
 {
     [SerializeField]
-    private Text _displayText;
+    private Text _displayText = null;
 
     // Start is called before the first frame update
     void Start()

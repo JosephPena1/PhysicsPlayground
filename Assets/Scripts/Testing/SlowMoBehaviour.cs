@@ -5,7 +5,7 @@ using UnityEngine;
 public class SlowMoBehaviour : MonoBehaviour
 {
     [SerializeField]
-    private float _slowAmount;
+    private float _slowAmount = 0.25f;
     private bool _timeSlowed = false;
 
     // Start is called before the first frame update

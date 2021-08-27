@@ -5,20 +5,22 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class ApplyForceBehaviour : MonoBehaviour
 {
-    private Rigidbody _rigidBody;
     [SerializeField]
-    private float _force;
+    private Rigidbody _rigidBody = null;
+
+    [SerializeField]
+    private float _force = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        _rigidBody = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-            _rigidBody.AddForce(new Vector3(0,0, _force), ForceMode.Impulse);
+        if (Input.GetButtonDown("Jump"))
+            _rigidBody.AddForce(new Vector3(0, _force, 0), ForceMode.Impulse);
     }
 }

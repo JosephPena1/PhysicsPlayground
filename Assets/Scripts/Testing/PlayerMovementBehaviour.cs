@@ -5,11 +5,10 @@ using UnityEngine;
 public class PlayerMovementBehaviour : MonoBehaviour
 {
     [SerializeField]
-    private Rigidbody _rigidbody;
+    private Rigidbody _rigidbody = null;
+
     [SerializeField]
-    private Camera _camera;
-    [SerializeField]
-    private float _speed;
+    private float _speed = 0;
 
     // Start is called before the first frame update
     void Start()
