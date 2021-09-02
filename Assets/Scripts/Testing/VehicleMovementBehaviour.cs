@@ -24,16 +24,16 @@ public class VehicleMovementBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            _frontLeftMotor.targetVelocity = 600;
-            _frontLeftMotor.force = 600;
-            _frontRightMotor.targetVelocity = -600;
-            _frontRightMotor.force = 600;
-            _rearLeftMotor.targetVelocity = 600;
-            _rearLeftMotor.force = 600;
-            _rearRightMotor.targetVelocity = -600;
-            _rearRightMotor.force = 600;
+            _frontLeftMotor.targetVelocity += 100;
+            _frontLeftMotor.force += 100;
+            _frontRightMotor.targetVelocity += -100;
+            _frontRightMotor.force += 100;
+            _rearLeftMotor.targetVelocity += 100;
+            _rearLeftMotor.force += 100;
+            _rearRightMotor.targetVelocity += -100;
+            _rearRightMotor.force += 100;
 
             frontLeft.motor = _frontLeftMotor;
             frontRight.motor = _frontRightMotor;
@@ -41,16 +41,16 @@ public class VehicleMovementBehaviour : MonoBehaviour
             rearRight.motor = _rearRightMotor;
         }
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            _frontLeftMotor.targetVelocity = -600;
-            _frontLeftMotor.force = 600;
-            _frontRightMotor.targetVelocity = 600;
-            _frontRightMotor.force = 600;
-            _rearLeftMotor.targetVelocity = -600;
-            _rearLeftMotor.force = 600;
-            _rearRightMotor.targetVelocity = 600;
-            _rearRightMotor.force = 600;
+            _frontLeftMotor.targetVelocity += -100;
+            _frontLeftMotor.force += 100;
+            _frontRightMotor.targetVelocity += 100;
+            _frontRightMotor.force += 100;
+            _rearLeftMotor.targetVelocity += -100;
+            _rearLeftMotor.force += 100;
+            _rearRightMotor.targetVelocity += 100;
+            _rearRightMotor.force += 100;
 
             frontLeft.motor = _frontLeftMotor;
             frontRight.motor = _frontRightMotor;
