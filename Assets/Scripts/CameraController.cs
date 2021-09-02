@@ -37,12 +37,12 @@ public class CameraController : MonoBehaviour
         //Move the camera
         RaycastHit hitInfo;
         if (Physics.Raycast(target.position, -transform.forward, out hitInfo, maxDistance))
+            //Zoom the camera in if there'ss a collision
             _currentDistance = hitInfo.distance;
 
         else
-        {
+            //Ease the camera out to the max distance if there's no camera
             _currentDistance = Mathf.MoveTowards(_currentDistance, maxDistance, returnSpeed * Time.deltaTime);
-        }
 
         transform.position = target.position + (-transform.forward * _currentDistance);
     }
