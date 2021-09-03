@@ -17,13 +17,13 @@ public class SlowMoBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("SlowTime") && _timeSlowed)
+        if (Input.GetKeyDown(KeyCode.E) && _timeSlowed)
         {
             Time.timeScale = 1;
             _timeSlowed = false;
         }
             
-        if (Input.GetButtonDown("SlowTime") && Time.timeScale != 0)
+        if (Input.GetKeyDown(KeyCode.Q) && Time.timeScale != 0)
         {
             Time.timeScale -= _slowAmount;
             _timeSlowed = true;

@@ -26,17 +26,12 @@ public class PlayerBehaviour : MonoBehaviour
         _controller = GetComponent<CharacterController>();
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.tag == "Hazard")
-            _animator.enabled = false;
-    }
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
             _isRagdoll = !_isRagdoll;
+            _controller.enabled = true;
             _animator.enabled = _isRagdoll;
         }
 
