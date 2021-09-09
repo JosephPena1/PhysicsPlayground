@@ -6,7 +6,8 @@ public class ShootObjectBehaviour : MonoBehaviour
 {
     public Camera camera;
     public Rigidbody rigidBody;
-    public float force;
+    public float force = 1.0f;
+    
 
     private void Update()
     {
@@ -25,9 +26,10 @@ public class ShootObjectBehaviour : MonoBehaviour
 
         Vector3 initialVelocity = FindInitialVelocity(displacement, acceleration);
 
+        Vector3 multForce = new Vector3(initialVelocity.x * force, 0, initialVelocity.z * force);
+
         Rigidbody projectileObject = Instantiate(rigidBody, camera.transform.position, camera.transform.rotation);
         projectileObject.AddForce(initialVelocity, ForceMode.VelocityChange);
-
     }
 
     private Vector3 FindInitialVelocity(Vector3 displacement, Vector3 acceleration)
