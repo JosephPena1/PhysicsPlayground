@@ -12,7 +12,6 @@ public class PlayerBehaviour : MonoBehaviour
 
     public Camera playerCamera;
 
-    private bool _isRagdoll = false;
     private CharacterController _controller;
     [SerializeField] private Animator _animator;
 
@@ -20,6 +19,7 @@ public class PlayerBehaviour : MonoBehaviour
     private Vector3 _airVelocity;
     private bool _isJumpDesired = false;
     private bool _isGrounded = false;
+    private float _timer = 0.0f;
 
     private void Awake()
     {
@@ -28,13 +28,6 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Backspace))
-        {
-            _isRagdoll = !_isRagdoll;
-            _controller.enabled = true;
-            _animator.enabled = _isRagdoll;
-        }
-
         if (_animator.enabled)
         {
             //Get movement input
@@ -58,7 +51,9 @@ public class PlayerBehaviour : MonoBehaviour
             _desiredVelocity *= speed;
 
             //Check for ground
-            _isGrounded = _controller.isGrounded;
+            ///CREATE TIMER FOR GRAVITYCHECK
+            _isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.1f); ;
+            //_isGrounded = _controller.isGrounded;
 
             //Change player facing
             if (faceWithCamera)
@@ -75,6 +70,7 @@ public class PlayerBehaviour : MonoBehaviour
             }
 
             _animator.SetBool("Jump", !_isGrounded);
+            _animator.SetFloat("VerticalSpeed", _desiredVelocity.y / jumpStrength);
 
             //Apply jump strength
             if (_isJumpDesired && _controller.isGrounded)
@@ -95,8 +91,6 @@ public class PlayerBehaviour : MonoBehaviour
 
             //Move
             _controller.Move(_desiredVelocity * Time.deltaTime);
-
-            
         }
     }
 }
