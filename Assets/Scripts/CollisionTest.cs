@@ -15,7 +15,7 @@ public class CollisionTest : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
             Debug.Log("Hit");
-        else if (collision.gameObject.CompareTag("Hazard"))
-            collision.rigidbody.AddForce((_rigidBody.velocity) * 2, ForceMode.Impulse);
+        /*else if (collision.gameObject.CompareTag("Hazard"))
+            collision.rigidbody.AddForce((_rigidBody.velocity) * 2, ForceMode.Impulse);*/
     }
 }

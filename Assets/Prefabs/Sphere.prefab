@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 6597073962136610461}
   - component: {fileID: 6597073962136610458}
   - component: {fileID: 6597073962136610459}
+  - component: {fileID: 7386715446152001365}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,3 +128,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   awakeMaterial: {fileID: 2100000, guid: 4fbb65f4e6c3d404a88407732fd44694, type: 2}
   asleepMaterial: {fileID: 2100000, guid: d44b998d3e25fbc44815724edcf60e6b, type: 2}
+--- !u!114 &7386715446152001365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6597073962136610456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90d21d4ff9d44764cbc032b479d394d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

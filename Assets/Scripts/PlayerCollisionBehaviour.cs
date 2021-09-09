@@ -15,7 +15,7 @@ public class PlayerCollisionBehaviour : MonoBehaviour
 
     private void EnableAnimator()
     {
-        if (Input.GetKeyDown(KeyCode.Backspace) && !_canMove)
+        if (Input.GetKeyDown(KeyCode.F) && !_canMove)
         {
             _canMove = true;
             _characterController.enabled = true;
