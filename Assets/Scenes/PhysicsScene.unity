@@ -1045,7 +1045,7 @@ MonoBehaviour:
   camera: {fileID: 963194227}
   spawnLocation: {fileID: 577920551}
   rigidBody: {fileID: 5177094832954403474, guid: 518ccdf99ec130d42ac080c228c90c81, type: 3}
-  force: 2
+  projectileTime: 2
 --- !u!1001 &1003049737
 PrefabInstance:
   m_ObjectHideFlags: 0
