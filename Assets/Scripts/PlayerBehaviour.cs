@@ -19,7 +19,6 @@ public class PlayerBehaviour : MonoBehaviour
     private Vector3 _airVelocity;
     private bool _isJumpDesired = false;
     private bool _isGrounded = false;
-    private float _timer = 0.0f;
 
     private void Awake()
     {
@@ -51,7 +50,6 @@ public class PlayerBehaviour : MonoBehaviour
             _desiredVelocity *= speed;
 
             //Check for ground
-            ///CREATE TIMER FOR GRAVITYCHECK
             _isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.1f); ;
             //_isGrounded = _controller.isGrounded;
 
