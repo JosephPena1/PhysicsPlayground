@@ -14,6 +14,9 @@ public class EnemyCollisionBehaviour : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Hammer"))
+        {
             _enemyHealth.takeDamage();
+            //Destroy(collision.collider.gameObject);
+        }
     }
 }
