@@ -174,9 +174,10 @@ GameObject:
   - component: {fileID: 1058423767776492647}
   - component: {fileID: 2071925483848761852}
   - component: {fileID: 966085003737643583}
+  - component: {fileID: 5101403812454389032}
   m_Layer: 0
   m_Name: ThrowingHammer
-  m_TagString: Untagged
+  m_TagString: Hammer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -240,3 +241,16 @@ CapsuleCollider:
   m_Height: 0.19389716
   m_Direction: 1
   m_Center: {x: -0.00033721374, y: -0.07676573, z: 0.00046020374}
+--- !u!114 &5101403812454389032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8935660508252552402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0909358dce13704fa2eee54c553f79e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  despawnTime: 5
