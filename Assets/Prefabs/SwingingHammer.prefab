@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2158611666218415316}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 2158611667035989111}
   m_Layer: 0
   m_Name: SwingingHammer
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,6 +175,7 @@ MonoBehaviour:
   delta: 1.5
   speed: 1
   direction: 1
+  swingAlongX: 0
 --- !u!1 &2158611667479360895
 GameObject:
   m_ObjectHideFlags: 0

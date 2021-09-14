@@ -42,11 +42,13 @@ public class PlayerBehaviour : MonoBehaviour
             Vector3 cameraForward = playerCamera.transform.forward;
             cameraForward.y = 0.0f;
             cameraForward.Normalize();
+
             //Get camera right
             Vector3 cameraRight = playerCamera.transform.right;
 
             //Find desired velocity
             _desiredVelocity = (cameraForward * inputForward) + (cameraRight * inputRight);
+
             //Get jump input
             _isJumpDesired = Input.GetButtonDown("Jump");
 
@@ -55,7 +57,7 @@ public class PlayerBehaviour : MonoBehaviour
             _desiredVelocity *= speed;
 
             //Check for ground
-            _isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.1f); ;
+            _isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.1f);
             //_isGrounded = _controller.isGrounded;
 
             //Change player facing

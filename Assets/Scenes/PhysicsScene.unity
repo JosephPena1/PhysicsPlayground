@@ -724,7 +724,7 @@ GameObject:
   - component: {fileID: 174466070}
   m_Layer: 0
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1072,7 +1072,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2158611667035989107, guid: e96e0d8bec42c8c4eb902eb53f814e97, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2158611667035989108, guid: e96e0d8bec42c8c4eb902eb53f814e97, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1104,7 +1104,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2158611667035989108, guid: e96e0d8bec42c8c4eb902eb53f814e97, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 2158611667035989108, guid: e96e0d8bec42c8c4eb902eb53f814e97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2457,7 +2457,7 @@ GameObject:
   - component: {fileID: 519941882}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2882,7 +2882,7 @@ GameObject:
   - component: {fileID: 601437963}
   m_Layer: 0
   m_Name: BallPit
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2982,7 +2982,7 @@ GameObject:
   - component: {fileID: 607701050}
   m_Layer: 0
   m_Name: TriggerBox
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3793,7 +3793,7 @@ GameObject:
   - component: {fileID: 748158258}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4283,6 +4283,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SwingingHammer
       objectReference: {fileID: 0}
+    - target: {fileID: 2158611667035989107, guid: e96e0d8bec42c8c4eb902eb53f814e97, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2158611667035989108, guid: e96e0d8bec42c8c4eb902eb53f814e97, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15
@@ -4313,7 +4317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2158611667035989108, guid: e96e0d8bec42c8c4eb902eb53f814e97, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2158611667035989108, guid: e96e0d8bec42c8c4eb902eb53f814e97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4911,7 +4915,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 963194227}
-  _maxDistance: 40
+  maxPickupDistance: 40
+  maxCameraDistance: 0.25
 --- !u!1 &979380407
 GameObject:
   m_ObjectHideFlags: 0
@@ -6072,7 +6077,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5941186548503585179, guid: fd3ab185f7eef4847b53adcbd0110ff3, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5941186548503585179, guid: fd3ab185f7eef4847b53adcbd0110ff3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6101,6 +6106,10 @@ PrefabInstance:
     - target: {fileID: 6483237951629896430, guid: fd3ab185f7eef4847b53adcbd0110ff3, type: 3}
       propertyPath: m_Name
       value: BrickTower (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483237951629896430, guid: fd3ab185f7eef4847b53adcbd0110ff3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd3ab185f7eef4847b53adcbd0110ff3, type: 3}
@@ -6688,7 +6697,7 @@ GameObject:
   - component: {fileID: 1269510620}
   m_Layer: 0
   m_Name: TriggerBox (1)
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9213,6 +9222,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SwingingHammer (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2158611667035989107, guid: e96e0d8bec42c8c4eb902eb53f814e97, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2158611667035989108, guid: e96e0d8bec42c8c4eb902eb53f814e97, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15
@@ -9243,7 +9256,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2158611667035989108, guid: e96e0d8bec42c8c4eb902eb53f814e97, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2158611667035989108, guid: e96e0d8bec42c8c4eb902eb53f814e97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -9785,7 +9798,7 @@ GameObject:
   - component: {fileID: 1743284558}
   m_Layer: 0
   m_Name: Cube (4)
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
