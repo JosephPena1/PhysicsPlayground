@@ -4916,7 +4916,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 963194227}
   maxPickupDistance: 40
-  maxCameraDistance: 0.25
+  maxRadius: 5
 --- !u!1 &979380407
 GameObject:
   m_ObjectHideFlags: 0

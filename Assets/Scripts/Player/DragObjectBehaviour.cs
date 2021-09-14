@@ -8,10 +8,9 @@ public class DragObjectBehaviour : MonoBehaviour
     [Tooltip("Max distance you can pick up objects")]
     public float maxPickupDistance = 20.0f;
     [Tooltip("How close an onject can get to the camera")]
-    public float maxCameraDistance = 0.25f;
+    public float maxRadius = 5.0f;
 
     private GameObject _objectGrabbed = null;
-    private bool _isGrabbed = false;
     private Vector3 _minDistance;
     
     // Update is called once per frame
@@ -30,40 +29,26 @@ public class DragObjectBehaviour : MonoBehaviour
         //Gets the length between the ray point and current position
         float rayDistance = (hit.point - transform.position).magnitude;
 
-        //multiplies the position by the maxCameraDistance and adds it to maxDistance
-        Vector3 keepDistance = new Vector3(transform.position.x * maxCameraDistance, transform.position.y, transform.position.z * maxCameraDistance);
-        Vector3 maxDistance = transform.position + keepDistance;
-
-        //If the object doesn't have an "Environment" tag
+        //If the object doesn't have an "Environment" or "Hazard" tag
         if (!hit.collider.gameObject.CompareTag("Environment") && !hit.collider.gameObject.CompareTag("Hazard"))
             //set the object hit to be objectGrabbed
             _objectGrabbed = hit.collider.gameObject;
 
-        //If rayDistance is less than the pickup range and greater than 5
-        if (rayDistance < maxPickupDistance && rayDistance > 5)
+        Vector3 centerPos = transform.position;
+        Vector3 objectPosition = _objectGrabbed.transform.position;
+
+        //Gets the distance from "Object grabbed" to "Camera"
+        float distance = Vector3.Distance(objectPosition, centerPos);
+
+        //If (rayDistance is less than the pickup range) and (distance is less than max radius)
+        if ((rayDistance < maxPickupDistance) && (distance > maxRadius))
         {
-            //The length between the object's position and current position
-            float distance = (_objectGrabbed.transform.position - maxDistance).magnitude;
+            Vector3 fromOriginToObject = objectPosition - centerPos;
 
-            //If distance is greater than or equal to 10
-            if (distance > 0)
-            {
-                //set objects position to the ray point
-                _objectGrabbed.transform.position = hit.point;
-                //set minDistance to objects position
-                _minDistance = _objectGrabbed.transform.position;
-            }
+            fromOriginToObject *= maxRadius / distance;
 
-            //Else set objects position to minDistance
-            else
-                _objectGrabbed.transform.position = maxDistance;
-
-
-
-            //While isGrabbed is true do something?
+            _objectGrabbed.transform.position = centerPos + fromOriginToObject;
         }
-
-        else
-            _objectGrabbed.transform.position = keepDistance;
+        //Maybe make an else to tell it to stay unless no input.
     }
 }
