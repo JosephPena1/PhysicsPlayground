@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class KillPlaneBehaviour : MonoBehaviour
 {
+    public bool trashPlaneMode;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
-            other.gameObject.transform.position = new Vector3(10,10,10);
+        if (!trashPlaneMode)
+        {
+            if (other.gameObject.CompareTag("Player"))
+                return;
+            else
+                Destroy(other.gameObject);
+        }
+
         else
-            Destroy(other.gameObject);
+            if (other.gameObject.CompareTag("Trash"))
+                Destroy(other.gameObject);
     }
 }

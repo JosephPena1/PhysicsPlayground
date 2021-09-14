@@ -23,6 +23,7 @@ public class EnemyCubeBehaviour : MonoBehaviour
             GameObject cube = Instantiate(gameObject, transform.position, transform.rotation);
             Destroy(cube.GetComponent<EnemyCubeBehaviour>());
             BoxCollider collider = cube.gameObject.GetComponent<BoxCollider>();
+            cube.tag = "Trash";
             collider.enabled = true;
             _cubeCreated = true;
             Destroy(gameObject);
