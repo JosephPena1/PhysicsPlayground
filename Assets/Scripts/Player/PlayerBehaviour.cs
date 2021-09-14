@@ -14,6 +14,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private CharacterController _controller;
     [SerializeField] private Animator _animator;
+    private Rigidbody _rigidBody;
 
     private Vector3 _desiredVelocity;
     private Vector3 _airVelocity;
@@ -23,10 +24,14 @@ public class PlayerBehaviour : MonoBehaviour
     private void Awake()
     {
         _controller = GetComponent<CharacterController>();
+        _rigidBody = GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.K))
+            _rigidBody.isKinematic = !_rigidBody.isKinematic;
+
         if (_animator.enabled)
         {
             //Get movement input
