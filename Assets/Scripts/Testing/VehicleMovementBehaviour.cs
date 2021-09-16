@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class VehicleMovementBehaviour : MonoBehaviour
 {
+    public float addedForce = 1.0f;
+
     public HingeJoint frontLeft = null;
     public HingeJoint frontRight = null;
     public HingeJoint rearLeft = null;
@@ -12,6 +14,9 @@ public class VehicleMovementBehaviour : MonoBehaviour
     private JointMotor _frontRightMotor;
     private JointMotor _rearLeftMotor;
     private JointMotor _rearRightMotor;
+
+    private float _maxForce = 0.0f;
+    private float _maxVelocity = 0.0f;
 
     private void Start()
     {
@@ -24,38 +29,47 @@ public class VehicleMovementBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (_maxForce > 300)
+            _maxForce = 300;
+
+        if (Input.GetKey(KeyCode.DownArrow) && _maxForce <= 300)
         {
-            _frontLeftMotor.targetVelocity += 100;
-            _frontLeftMotor.force += 100;
-            _frontRightMotor.targetVelocity += -100;
-            _frontRightMotor.force += 100;
-            _rearLeftMotor.targetVelocity += 100;
-            _rearLeftMotor.force += 100;
-            _rearRightMotor.targetVelocity += -100;
-            _rearRightMotor.force += 100;
+            //Add "addForce" the target velocity and force by
+            _frontLeftMotor.targetVelocity += addedForce;
+            _frontLeftMotor.force += addedForce;
+            _frontRightMotor.targetVelocity += -addedForce;
+            _frontRightMotor.force += addedForce;
+            _rearLeftMotor.targetVelocity += addedForce;
+            _rearLeftMotor.force += addedForce;
+            _rearRightMotor.targetVelocity += -addedForce;
+            _rearRightMotor.force += addedForce;
 
             frontLeft.motor = _frontLeftMotor;
             frontRight.motor = _frontRightMotor;
             rearLeft.motor = _rearLeftMotor;
             rearRight.motor = _rearRightMotor;
+
+            _maxVelocity = _frontLeftMotor.targetVelocity;
+            _maxForce += addedForce;
         }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.UpArrow) && _maxForce <= 300)
         {
-            _frontLeftMotor.targetVelocity += -100;
-            _frontLeftMotor.force += 100;
-            _frontRightMotor.targetVelocity += 100;
-            _frontRightMotor.force += 100;
-            _rearLeftMotor.targetVelocity += -100;
-            _rearLeftMotor.force += 100;
-            _rearRightMotor.targetVelocity += 100;
-            _rearRightMotor.force += 100;
+            _frontLeftMotor.targetVelocity += -addedForce;
+            _frontLeftMotor.force += addedForce;
+            _frontRightMotor.targetVelocity += addedForce;
+            _frontRightMotor.force += addedForce;
+            _rearLeftMotor.targetVelocity += -addedForce;
+            _rearLeftMotor.force += addedForce;
+            _rearRightMotor.targetVelocity += addedForce;
+            _rearRightMotor.force += addedForce;
 
             frontLeft.motor = _frontLeftMotor;
             frontRight.motor = _frontRightMotor;
             rearLeft.motor = _rearLeftMotor;
             rearRight.motor = _rearRightMotor;
+
+            _maxForce += addedForce;
         }
     }
 }

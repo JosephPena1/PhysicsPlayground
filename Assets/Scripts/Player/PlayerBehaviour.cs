@@ -10,16 +10,18 @@ public class PlayerBehaviour : MonoBehaviour
     public float gravityModifier = 1.0f;
     public bool faceWithCamera = true;
 
-    public Camera playerCamera;
+    public Camera playerCamera = null;
 
-    private CharacterController _controller;
-    [SerializeField] private Animator _animator;
-    private Rigidbody _rigidBody;
+    private CharacterController _controller = null;
+    [SerializeField] private Animator _animator = null;
+    private Rigidbody _rigidBody = null;
 
     private Vector3 _desiredVelocity;
     private Vector3 _airVelocity;
     private bool _isJumpDesired = false;
     private bool _isGrounded = false;
+
+    //add acceleration & decceleration
 
     private void Awake()
     {

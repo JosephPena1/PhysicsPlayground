@@ -6,24 +6,34 @@ public class ProjectileLauncher : MonoBehaviour
 {
     public Transform target = null;
     public Rigidbody projectile = null;
+    public Transform spawnLocation = null;
 
+    public float projectileDelay = 1.0f;
     public float projectileTime = 2.0f;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        projectileDelay -= Time.deltaTime;
+        float distance = (target.transform.position - transform.position).magnitude;
+
+        //If the distance is less than 10 and projectile delay is less than 0
+        if (distance <= 10 && projectileDelay <= 0)
+        {
+            //Launch projectile and sets projectile delay to 1 second
             LaunchProjectile();
+            projectileDelay = 1.0f;
+        }
     }
 
     public void LaunchProjectile()
     {
-        Vector3 displacement = (target.position - transform.position);
+        Vector3 distance = (target.position - transform.position);
         Vector3 acceleration = Physics.gravity;
 
-        Vector3 initialVelocity = FindInitialVelocity(displacement, acceleration, projectileTime);
+        Vector3 initialVelocity = FindInitialVelocity(distance, acceleration, projectileTime);
         Vector3 finalVelocity = FindFinalVelocity(initialVelocity, acceleration, projectileTime);
 
-        Rigidbody projectileInstance = Instantiate(projectile, transform.position, transform.rotation);
+        Rigidbody projectileInstance = Instantiate(projectile, spawnLocation.position, transform.rotation);
         projectileInstance.AddForce(initialVelocity, ForceMode.VelocityChange);
     }
 

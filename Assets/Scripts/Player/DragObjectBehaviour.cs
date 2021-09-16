@@ -49,6 +49,7 @@ public class DragObjectBehaviour : MonoBehaviour
 
             _objectGrabbed.transform.position = centerPos + fromOriginToObject;
         }
+
         //Maybe make an else to tell it to stay unless no input.
     }
 }

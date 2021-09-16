@@ -20,7 +20,9 @@ public class EnemySpawnerBehaviour : MonoBehaviour
             Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
             GameObject enemy = Instantiate(spawnedObject, spawnPos, transform.rotation);
             EnemySeekBehaviour enemyTarget = enemy.GetComponent<EnemySeekBehaviour>();
+            ProjectileLauncher enemyProjTarget = enemy.GetComponent<ProjectileLauncher>();
             enemyTarget.target = target;
+            enemyProjTarget.target = target.transform;
             _spawnDelay = timeBetweenSpawn;
         }
     }
