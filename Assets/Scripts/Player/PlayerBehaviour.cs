@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
+    [Tooltip("[0.0 - 1.0]")]
+    public float drag = 1.0f;
     public float speed = 5.0f;
     public float jumpStrength = 10.0f;
     public float airControl = 1.0f;
@@ -39,6 +41,8 @@ public class PlayerBehaviour : MonoBehaviour
             //Get movement input
             float inputForward = Input.GetAxis("Vertical");
             float inputRight = Input.GetAxis("Horizontal");
+
+            Vector3 input = new Vector3(inputRight, 0, inputForward);
 
             //Get camera forward
             Vector3 cameraForward = playerCamera.transform.forward;
@@ -96,8 +100,19 @@ public class PlayerBehaviour : MonoBehaviour
             //Add air velocity
             _desiredVelocity += _airVelocity;
 
+            //calculate acceleration [Find a way to decelerate]
+            Vector3 velocity = _desiredVelocity;
+
+            velocity += input * speed * Time.deltaTime;
+
+            velocity *= drag;
+
+            velocity.y -= gravityModifier * Time.deltaTime;
+
+            Debug.Log(velocity);
+
             //Move
-            _controller.Move(_desiredVelocity * Time.deltaTime);
+            _controller.Move(velocity * Time.deltaTime);
         }
     }
 }
