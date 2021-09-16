@@ -21,7 +21,10 @@ public class EnemySeekBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += (target.transform.position - transform.position).normalized * speed * Time.deltaTime;
+        float distance = (target.transform.position - transform.position).magnitude;
+
+        if(distance >= 5)
+            transform.position += (target.transform.position - transform.position).normalized * speed * Time.deltaTime;
 
         if (_enemyHealth.Health <= 0)
         {
