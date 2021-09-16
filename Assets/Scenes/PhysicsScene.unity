@@ -7098,6 +7098,14 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1644648926}
+    - target: {fileID: 7220736801104466127, guid: 3b6449bea54715041a481404d845441f, type: 3}
+      propertyPath: projectileTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7220736801104466127, guid: 3b6449bea54715041a481404d845441f, type: 3}
+      propertyPath: maxRange
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b6449bea54715041a481404d845441f, type: 3}
 --- !u!1 &1389651059
