@@ -11465,6 +11465,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 547501859400660918, guid: c85b10819e6cdf84d808642e4c4c8283, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634961603556552317, guid: c85b10819e6cdf84d808642e4c4c8283, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
+    - target: {fileID: 2732701324864144861, guid: c85b10819e6cdf84d808642e4c4c8283, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
+    - target: {fileID: 3095890809981218223, guid: c85b10819e6cdf84d808642e4c4c8283, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
+    - target: {fileID: 3185354954701057464, guid: c85b10819e6cdf84d808642e4c4c8283, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     - target: {fileID: 4868188269819742556, guid: c85b10819e6cdf84d808642e4c4c8283, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -11509,9 +11529,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6500122325224207694, guid: c85b10819e6cdf84d808642e4c4c8283, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     - target: {fileID: 7773378848511351868, guid: c85b10819e6cdf84d808642e4c4c8283, type: 3}
       propertyPath: m_Name
       value: KillBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 7773378848511351868, guid: c85b10819e6cdf84d808642e4c4c8283, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c85b10819e6cdf84d808642e4c4c8283, type: 3}
