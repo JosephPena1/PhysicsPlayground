@@ -109,7 +109,7 @@ public class PlayerBehaviour : MonoBehaviour
 
             velocity.y -= gravityModifier * Time.deltaTime;
 
-            Debug.Log(velocity);
+            //Debug.Log(velocity);
 
             //Move
             _controller.Move(velocity * Time.deltaTime);

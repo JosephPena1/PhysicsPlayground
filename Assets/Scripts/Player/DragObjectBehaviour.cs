@@ -1,23 +1,49 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DragObjectBehaviour : MonoBehaviour
 {
     public Camera camera = null;
-    [Tooltip("Max distance you can pick up objects")]
-    public float maxPickupDistance = 20.0f;
-    [Tooltip("How close an onject can get to the camera")]
-    public float maxRadius = 5.0f;
+    public float speed = 0.1f;
 
-    private GameObject _objectGrabbed = null;
-    private Vector3 _minDistance;
-    
+    private GameObject _object = null;
+    private bool _objectGrabbed = false;
+
+    private Vector3 m_offset;
+    private float m_zCoord;
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(2))
-            DragObject();
+        if (_objectGrabbed && _object != null)
+            _object.transform.position = GetMouseWorldPos() + m_offset;
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            Vector3 offset = _object.transform.position - transform.position;
+            m_offset += offset * speed;
+            _object.transform.position += m_offset * Time.deltaTime;
+        }
+
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            Vector3 offset = _object.transform.position - transform.position;
+            m_offset -= offset * speed;
+            _object.transform.position -= m_offset * Time.deltaTime;
+        }
+
+        if (Input.GetMouseButtonDown(2))
+        {
+            if (!_objectGrabbed)
+                DragObject();
+            else
+            {
+                _object = null;
+                _objectGrabbed = false;
+            }
+        }
     }
 
     private void DragObject()
@@ -29,27 +55,30 @@ public class DragObjectBehaviour : MonoBehaviour
         //Gets the length between the ray point and current position
         float rayDistance = (hit.point - transform.position).magnitude;
 
-        //If the object doesn't have an "Environment" or "Hazard" tag
-        if (!hit.collider.gameObject.CompareTag("Environment") && !hit.collider.gameObject.CompareTag("Hazard"))
-            //set the object hit to be objectGrabbed
-            _objectGrabbed = hit.collider.gameObject;
-
-        Vector3 centerPos = transform.position;
-        Vector3 objectPosition = _objectGrabbed.transform.position;
-
-        //Gets the distance from "Object grabbed" to "Camera"
-        float distance = Vector3.Distance(objectPosition, centerPos);
-
-        //If (rayDistance is less than the pickup range) and (distance is less than max radius)
-        if ((rayDistance < maxPickupDistance) && (distance > maxRadius))
+        //If the object doesn't have an "Environment" or "Hazard" tag and there isn't an object already grabbed
+        if (!hit.collider.gameObject.CompareTag("Environment") && !hit.collider.gameObject.CompareTag("Hazard") && !_objectGrabbed)
         {
-            Vector3 fromOriginToObject = objectPosition - centerPos;
+            //set the object hit to be objectGrabbed
+            _object = hit.collider.gameObject;
 
-            fromOriginToObject *= maxRadius / distance;
+            //set object grabbed true
+            _objectGrabbed = true;
 
-            _objectGrabbed.transform.position = centerPos + fromOriginToObject;
+            m_zCoord = camera.WorldToScreenPoint(_object.transform.position).z;
+
+            //Store offset = gameobject world pos - mouse world pos 
+            m_offset = _object.transform.position - GetMouseWorldPos();
         }
+    }
 
-        //Maybe make an else to tell it to stay unless no input.
+    private Vector3 GetMouseWorldPos()
+    {
+        //pixel coordinates (x, y)
+        Vector3 mousePoint = Input.mousePosition;
+
+        //z coordinates of game object on screen
+        mousePoint.z = m_zCoord;
+
+        return camera.ScreenToWorldPoint(mousePoint);
     }
 }

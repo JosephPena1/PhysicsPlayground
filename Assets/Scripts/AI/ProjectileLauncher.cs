@@ -27,9 +27,10 @@ public class ProjectileLauncher : MonoBehaviour
         projectileDelay -= Time.deltaTime;
         float distance = (target.transform.position - transform.position).magnitude;
 
-        //If the distance is less than 10 and projectile delay is less than 0
+        //If the distance is less than maxRange and projectile delay is less than 0
         if (distance <= maxRange && projectileDelay <= 0)
         {
+            //Start burst shooting
             _burstShotDelay -= Time.deltaTime;
             if (_burstShotDelay <= 0 && _shotCount < 3)
             {
@@ -37,8 +38,10 @@ public class ProjectileLauncher : MonoBehaviour
                 _shotCount += 1;
                 _burstShotDelay += 0.3f;
             }
+            //if shot count is less than 3
             if (_shotCount >= 3)
             {
+                //reset projectile delay counter
                 projectileDelay = _projectileDelay;
                 _shotCount = 0;
                 _burstShotDelay = 0.0f;
