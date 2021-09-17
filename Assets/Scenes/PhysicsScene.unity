@@ -11556,7 +11556,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6597073962136610456, guid: 8b130114d5c1fd4438da09344414f16e, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Hazard
       objectReference: {fileID: 0}
     - target: {fileID: 6597073962136610458, guid: 8b130114d5c1fd4438da09344414f16e, type: 3}
       propertyPath: m_Mass
@@ -11618,5 +11618,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -9170322835136331954, guid: 8b130114d5c1fd4438da09344414f16e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8b130114d5c1fd4438da09344414f16e, type: 3}
