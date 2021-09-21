@@ -10,7 +10,7 @@ public class ShootObjectBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && Time.timeScale > 0.0f)
             LaunchProjectile();
     }
 
