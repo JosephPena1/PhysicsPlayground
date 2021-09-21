@@ -3,6 +3,7 @@
 ### Controls:
 
 ##### Keyboard:
+	Esc - Pause menu
 	WASD - Move
 	F - Unragdoll
 	UpArrow & DownArrow - Move Vehicle
