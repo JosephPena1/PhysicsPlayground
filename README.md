@@ -5,7 +5,6 @@
 ##### Keyboard:
 	WASD - Move
 	F - Unragdoll
-	K - Toggle Kinematic
 	UpArrow & DownArrow - Move Vehicle
 
 ##### Mouse:
