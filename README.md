@@ -1,5 +1,10 @@
 ## PhysicsPlayground
 
+### Downloading:
+ - Click [here](https://github.com/JosephPena1/PhysicsPlayground/releases/download/v0.40/UnityPhysicsPlayground_v0.40.zip) to download the game
+ - After downloading right click the .zip file and "Extract all" (or "Extract here" if using 7zip)
+ - Open "UnityPhysicsPlayground" and double-click "PhysicsPlayground.exe" to play the game
+
 ### Controls:
 
 ##### Keyboard:
