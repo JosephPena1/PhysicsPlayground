@@ -1,9 +1,8 @@
-﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DragObjectBehaviour : MonoBehaviour
+public class MDragObjectBehaviour : MonoBehaviour
 {
     public Camera camera = null;
     public float speed = 0.1f;
@@ -14,46 +13,39 @@ public class DragObjectBehaviour : MonoBehaviour
     private Vector3 m_offset;
     private float m_zCoord;
 
-    // Update is called once per frame
     void Update()
     {
-        if (_objectGrabbed && _object != null)
+        //If object is not null, update position with offset
+        if (_object)
+        {
             _object.transform.position = GetMouseWorldPos() + m_offset;
-
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            Vector3 offset = _object.transform.position - transform.position;
-            m_offset += offset * speed;
-            _object.transform.position += m_offset * Time.deltaTime;
+            m_zCoord = camera.WorldToScreenPoint(_object.transform.position).z;
+            m_offset = _object.transform.position - GetMouseWorldPos();
         }
 
-        if (Input.GetKey(KeyCode.LeftControl))
-        {
-            Vector3 offset = _object.transform.position - transform.position;
-            m_offset -= offset * speed;
-            _object.transform.position -= m_offset * Time.deltaTime;
-        }
+        if (Input.GetAxis("MouseScrollWheel") > 0)
+            UpdateObjectDistance(true);
 
-        if (Input.GetMouseButtonDown(2))
+        if (Input.GetAxis("MouseScrollWheel") < 0)
+            UpdateObjectDistance(false);
+
+        if (Input.GetMouseButtonDown(0))
         {
+            //Toggles object grab
             if (!_objectGrabbed)
-                DragObject();
-            else
             {
-                _object = null;
-                _objectGrabbed = false;
+                DragObject();
+                return;
             }
+            _object = null;
+            _objectGrabbed = false;
         }
     }
-
     private void DragObject()
     {
         RaycastHit hit;
         Ray ray = camera.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(ray, out hit);
-
-        //Gets the length between the ray point and current position
-        float rayDistance = (hit.point - transform.position).magnitude;
 
         //If the object doesn't have an "Environment" or "Hazard" tag and there isn't an object already grabbed
         if (!hit.collider.gameObject.CompareTag("Environment") && !hit.collider.gameObject.CompareTag("Hazard") && !_objectGrabbed)
@@ -61,12 +53,11 @@ public class DragObjectBehaviour : MonoBehaviour
             //set the object hit to be objectGrabbed
             _object = hit.collider.gameObject;
 
-            //set object grabbed true
             _objectGrabbed = true;
 
             m_zCoord = camera.WorldToScreenPoint(_object.transform.position).z;
 
-            //Store offset = gameobject world pos - mouse world pos 
+            //Store offset = gameobject world pos - mouse world pos
             m_offset = _object.transform.position - GetMouseWorldPos();
         }
     }
@@ -80,5 +71,23 @@ public class DragObjectBehaviour : MonoBehaviour
         mousePoint.z = m_zCoord;
 
         return camera.ScreenToWorldPoint(mousePoint);
+    }
+
+    private void UpdateObjectDistance(bool IsPositive)
+    {
+        //Create an offset with the object position and the camera position
+        Vector3 offset = _object.transform.position - transform.position;
+
+        if (IsPositive)
+        {
+            m_offset += (offset * speed);
+            _object.transform.position += m_offset * Time.deltaTime;
+            return;
+        }
+        if ((_object.transform.position - transform.transform.position).magnitude >= 30)
+        {
+            m_offset -= (offset * speed);
+            _object.transform.position -= m_offset * Time.deltaTime;
+        }
     }
 }
